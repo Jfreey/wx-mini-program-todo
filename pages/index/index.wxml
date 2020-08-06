@@ -1,6 +1,6 @@
 <view class="container">
     <view class="button-login" wx:if="{{ !hasUserInfo && canIUse}}">
-        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">查看TODO-LIST</button>
+        <button open-type="getUserInfo" bind:getuserinfo="getUserInfo">查看TODO-LIST</button>
     </view>
     <view wx:else class="info-panel">
         <view class="top-panel">
@@ -17,15 +17,19 @@
             </view>
             <view class="search-bar">
                 <input class="input" type="text" model:value="{{todoContent}}" placeholder="你想要TODO什么"
-                       confirm-type="done" bindconfirm="addNewTodo"/>
+                       confirm-type="done" bind:confirm="addNewTodo"/>
             </view>
         </view>
         <view class="list">
-            <view wx:for="{{todoList}}">
-                <view class="todo-item">
-                    <text>{{item}}</text>
+            <checkbox-group bind:change="checkboxChange">
+                <view wx:for="{{todoList}}">
+                    <view class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
+                        <checkbox value="{{item.value}}" checked="{{item.checked}}"></checkbox>
+                        <view wx:if="{{item.checked === true}}" class="complete">{{item.value}}</view>
+                        <view wx:else>{{item.value}}</view>
+                    </view>
                 </view>
-            </view>
+            </checkbox-group>
         </view>
     </view>
 </view>

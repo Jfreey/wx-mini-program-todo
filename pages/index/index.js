@@ -28,7 +28,10 @@ Page({
     addNewTodo() {
         this.setData(
             {
-                todoList: [this.data.todoContent, ...this.data.todoList],
+                todoList: [
+                    { value: this.data.todoContent },
+                    ...this.data.todoList,
+                ],
             },
             () => {
                 this.setData({
@@ -36,5 +39,11 @@ Page({
                 });
             },
         );
+    },
+    selectHandle(e) {
+        const { index } = e.currentTarget.dataset;
+        this.setData({
+            [`todoList[${index}].checked`]: !this.data.todoList[index].checked,
+        });
     },
 });
