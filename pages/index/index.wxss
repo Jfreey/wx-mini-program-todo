@@ -18,7 +18,8 @@
     right: 0;
     background: #ffffff;
     padding: 0 20rpx 20rpx;
-    box-shadow: 0 10rpx 20rpx #eee;
+    box-shadow: 0 10rpx 20rpx #ccc;
+    z-index: 1000;
 }
 
 .tabs {
@@ -43,6 +44,7 @@
 
 .tab-item.active {
     color: #f08080;
+    border-color: #f08080;
 }
 
 .userinfo {
@@ -117,7 +119,7 @@
 }
 
 .content {
-    width: 92%;
+    width: 76%;
 }
 
 .content text {

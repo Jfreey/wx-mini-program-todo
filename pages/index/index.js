@@ -11,19 +11,11 @@ Page({
         ],
         selectAll: false,
         hasUserInfo: false,
+        activeTabName: 'all',
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
     },
     onLoad(options) {
         this.setData({ todoList: wx.getStorageSync('todoList') || [] });
-    },
-    onReady() {},
-    onShow() {},
-    onHide() {},
-    onUnload() {},
-    onShareAppMessage() {
-        return {
-            title: '',
-        };
     },
     getUserInfo(e) {
         const { userInfo } = e.detail;
@@ -46,6 +38,17 @@ Page({
                     selectAll: false,
                     todoContent: '',
                 });
+                wx.setStorageSync('todoList', [...this.data.todoList]);
+            },
+        );
+    },
+    deleteTodo(index) {
+        this.data.todoList.splice(index, 1);
+        this.setData(
+            {
+                todoList: this.data.todoList,
+            },
+            () => {
                 wx.setStorageSync('todoList', [...this.data.todoList]);
             },
         );
@@ -108,6 +111,7 @@ Page({
         }
         this.setData({
             todoList,
+            activeTabName: value,
         });
     },
 });

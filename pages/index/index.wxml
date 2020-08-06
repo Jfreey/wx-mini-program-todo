@@ -24,7 +24,10 @@
                     <switch type="checkbox" checked="{{selectAll}}" bind:change="selectAll"></switch>
                 </view>
                 <view>
-                    <label class="tab-item" wx:for="{{filterList}}" wx:key="value" data-value="{{item.value}}" bind:tap="filter">{{item.name}}</label>
+                    <label class="tab-item {{item.value === activeTabName?'active':''}}" wx:for="{{filterList}}"
+                           wx:key="value" data-value="{{item.value}}"
+                           bind:tap="filter">{{item.name}}
+                    </label>
                 </view>
             </view>
         </view>
@@ -33,11 +36,11 @@
                 <view wx:for="{{todoList}}" wx:key="code">
                     <label class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
                         <switch type="checkbox" value="{{item.checked}}" checked="{{item.checked}}"></switch>
-                        <view wx:if="{{item.checked === true}}" class="complete content">
+                        <view class="{{item.checked === true?'complete':''}} content">
                             <text>{{item.value}}</text>
                         </view>
-                        <view wx:else class="content">
-                            <text>{{item.value}}</text>
+                        <view>
+                            <button bind:tap="deleteTodo" type="warn" data-index="index" size="mini">删除</button>
                         </view>
                     </label>
                 </view>
