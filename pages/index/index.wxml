@@ -1,1 +1,31 @@
-<view bindtap="test">New Page</view>
+<view class="container">
+    <view class="button-login" wx:if="{{ !hasUserInfo && canIUse}}">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">查看TODO-LIST</button>
+    </view>
+    <view wx:else class="info-panel">
+        <view class="top-panel">
+            <view class="userinfo">
+                <view class="userinfo-panel">
+                    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                    <text class="userinfo-nickname">欢迎回来，{{userInfo.nickName}}</text>
+                </view>
+                <view class="todo-count">
+                    TODO:
+                    <text>{{todoList.length}}</text>
+                    条
+                </view>
+            </view>
+            <view class="search-bar">
+                <input class="input" type="text" model:value="{{todoContent}}" placeholder="你想要TODO什么"
+                       confirm-type="done" bindconfirm="addNewTodo"/>
+            </view>
+        </view>
+        <view class="list">
+            <view wx:for="{{todoList}}">
+                <view class="todo-item">
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,3 +1,83 @@
-page {
-  
+.button-login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-panel {
+    width: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.top-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 0 20rpx;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userinfo-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.userinfo-avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    padding: 0 20rpx;
+    color: #5c5c5c;
+}
+
+.todo-count {
+    color: #5c5c5c;
+    padding: 0 20rpx;
+}
+
+.search-bar {
+    width: 100%;
+    border: 1rpx solid #b1b1b1;
+    border-radius: 6px;
+    margin: 20rpx 0;
+    padding: 5rpx 20rpx;
+    box-sizing: border-box;
+    box-shadow: 0 0 1rpx #aeaeae, 0 0 10rpx #ccc;
+}
+
+.search-bar .input {
+    height: 60rpx;
+}
+
+.todo-count text {
+    color: #f08080;
+}
+
+.list {
+    padding-top: 170rpx;
+}
+
+.todo-item {
+    padding: 20rpx;
+    background: #f1f1f1f1;
+    border: 1rpx solid #b1b1b1;
+    box-shadow: 1rpx 5rpx 1rpx #e6e6e6, 1rpx 5rpx 10rpx #ccc;
+    color: #666666;
+    border-radius: 4px;
+    margin-bottom: 20rpx;
 }

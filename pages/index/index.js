@@ -1,5 +1,12 @@
+const app = getApp();
 Page({
-    data: {},
+    data: {
+        userInfo: null,
+        todoContent: '',
+        todoList: [],
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    },
     onLoad(options) {},
     onReady() {},
     onShow() {},
@@ -10,7 +17,24 @@ Page({
             title: '',
         };
     },
-    test() {
-        console.log('test1');
+    getUserInfo(e) {
+        const { userInfo } = e.detail;
+        app.globalData.userInfo = userInfo;
+        this.setData({
+            userInfo,
+            hasUserInfo: true,
+        });
+    },
+    addNewTodo() {
+        this.setData(
+            {
+                todoList: [this.data.todoContent, ...this.data.todoList],
+            },
+            () => {
+                this.setData({
+                    todoContent: '',
+                });
+            },
+        );
     },
 });
