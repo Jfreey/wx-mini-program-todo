@@ -15,19 +15,31 @@
                     条
                 </view>
             </view>
-            <view class="search-bar">
+            <view class="input-bar">
                 <input class="input" type="text" model:value="{{todoContent}}" placeholder="你想要TODO什么"
                        confirm-type="done" bind:confirm="addNewTodo"/>
+            </view>
+            <view class="tabs">
+                <view class="select-all">
+                    <switch type="checkbox" checked="{{selectAll}}" bind:change="selectAll"></switch>
+                </view>
+                <view>
+                    <label class="tab-item" wx:for="{{filterList}}" wx:key="value" data-value="{{item.value}}" bind:tap="filter">{{item.name}}</label>
+                </view>
             </view>
         </view>
         <view class="list">
             <checkbox-group bind:change="checkboxChange">
-                <view wx:for="{{todoList}}">
-                    <view class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
-                        <checkbox value="{{item.value}}" checked="{{item.checked}}"></checkbox>
-                        <view wx:if="{{item.checked === true}}" class="complete">{{item.value}}</view>
-                        <view wx:else>{{item.value}}</view>
-                    </view>
+                <view wx:for="{{todoList}}" wx:key="code">
+                    <label class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
+                        <switch type="checkbox" value="{{item.checked}}" checked="{{item.checked}}"></switch>
+                        <view wx:if="{{item.checked === true}}" class="complete content">
+                            <text>{{item.value}}</text>
+                        </view>
+                        <view wx:else class="content">
+                            <text>{{item.value}}</text>
+                        </view>
+                    </label>
                 </view>
             </checkbox-group>
         </view>
