@@ -1,0 +1,4 @@
+<view class="input-bar">
+    <input class="input" type="text" model:value="{{todoContent}}" placeholder="你想要TODO什么"
+           confirm-type="done" bind:confirm="confirmHandle"/>
+</view>

@@ -4,47 +4,10 @@
     </view>
     <view wx:else class="info-panel">
         <view class="top-panel">
-            <view class="userinfo">
-                <view class="userinfo-panel">
-                    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                    <text class="userinfo-nickname">欢迎回来，{{userInfo.nickName}}</text>
-                </view>
-                <view class="todo-count">
-                    TODO:
-                    <text>{{todoList.length}}</text>
-                    条
-                </view>
-            </view>
-            <view class="input-bar">
-                <input class="input" type="text" model:value="{{todoContent}}" placeholder="你想要TODO什么"
-                       confirm-type="done" bind:confirm="addNewTodo"/>
-            </view>
-            <view class="tabs">
-                <view class="select-all">
-                    <switch type="checkbox" checked="{{selectAll}}" bind:change="selectAll"></switch>
-                </view>
-                <view>
-                    <label class="tab-item {{item.value === activeTabName?'active':''}}" wx:for="{{filterList}}"
-                           wx:key="value" data-value="{{item.value}}"
-                           bind:tap="filter">{{item.name}}
-                    </label>
-                </view>
-            </view>
+            <user-info user-info="{{userInfo}}" total-number="{{todoList.length}}"/>
+            <input-bar bind:confirmHandle="addNewTodo"/>
+            <tabs bind:filterHandle="filter" bind:selectAllHandle="selectAllHandle"/>
         </view>
-        <view class="list">
-            <checkbox-group bind:change="checkboxChange">
-                <view wx:for="{{todoList}}" wx:key="code">
-                    <label class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
-                        <switch type="checkbox" value="{{item.checked}}" checked="{{item.checked}}"></switch>
-                        <view class="{{item.checked === true?'complete':''}} content">
-                            <text>{{item.value}}</text>
-                        </view>
-                        <view>
-                            <button bind:tap="deleteTodo" type="warn" data-index="index" size="mini">删除</button>
-                        </view>
-                    </label>
-                </view>
-            </checkbox-group>
-        </view>
+       <list todo-list="{{todoList}}" bind:selectHandle="selectHandle" bind:deleteHandle="deleteTodo"/>
     </view>
 </view>

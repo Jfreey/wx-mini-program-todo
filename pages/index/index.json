@@ -1,4 +1,10 @@
 {
-  "navigationBarTitleText": "",
-  "usingComponents": {}
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "user-info": "../../components/user-info/user-info",
+        "input-bar": "../../components/input-bar/input-bar",
+        "tabs": "../../components/tabs/tabs",
+        "list": "../../components/list/list"
+    },
+    "component": true
 }

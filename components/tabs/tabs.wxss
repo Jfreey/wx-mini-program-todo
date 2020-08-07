@@ -1,0 +1,23 @@
+.tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.select-all {
+    margin-left: 20rpx;
+}
+
+.tab-item {
+    background: #f1f1f1;
+    border: 1rpx solid #ccc;
+    padding: 0 10rpx;
+    margin-left: 20rpx;
+    color: #666;
+    border-radius: 2rpx;
+}
+
+.tab-item.active {
+    color: #f08080;
+    border-color: #f08080;
+}

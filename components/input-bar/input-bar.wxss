@@ -1,0 +1,13 @@
+.input-bar {
+    width: 100%;
+    border: 1rpx solid #b1b1b1;
+    border-radius: 6px;
+    margin: 20rpx 0;
+    padding: 5rpx 20rpx;
+    box-sizing: border-box;
+    box-shadow: 0 0 1rpx #aeaeae, 0 0 10rpx #ccc;
+}
+
+.input-bar .input {
+    height: 60rpx;
+}

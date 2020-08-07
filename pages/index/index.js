@@ -2,16 +2,8 @@ const app = getApp();
 Page({
     data: {
         userInfo: null,
-        todoContent: '',
         todoList: [],
-        filterList: [
-            { name: '全部', value: 'all', checked: true },
-            { name: '未完成', value: 'active', checked: false },
-            { name: '已完成', value: 'complete', checked: false },
-        ],
-        selectAll: false,
         hasUserInfo: false,
-        activeTabName: 'all',
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
     },
     onLoad(options) {
@@ -25,24 +17,22 @@ Page({
             hasUserInfo: true,
         });
     },
-    addNewTodo() {
+    addNewTodo(e) {
+        const { value } = e.detail;
         this.setData(
             {
-                todoList: [
-                    { value: this.data.todoContent },
-                    ...this.data.todoList,
-                ],
+                todoList: [{ value }, ...this.data.todoList],
             },
             () => {
                 this.setData({
                     selectAll: false,
-                    todoContent: '',
                 });
                 wx.setStorageSync('todoList', [...this.data.todoList]);
             },
         );
     },
-    deleteTodo(index) {
+    deleteTodo(e) {
+        const { value: index } = e.detail;
         this.data.todoList.splice(index, 1);
         this.setData(
             {
@@ -54,7 +44,7 @@ Page({
         );
     },
     selectHandle(e) {
-        const { index } = e.currentTarget.dataset;
+        const { value: index } = e.detail;
         const checked = !this.data.todoList[index].checked;
         this.setData(
             {
@@ -70,8 +60,9 @@ Page({
             },
         );
     },
-    selectAll() {
-        const selectAll = !this.data.selectAll;
+    selectAllHandle(e) {
+        const { value: selectAll } = e.detail;
+
         this.setData(
             {
                 selectAll,
@@ -92,7 +83,7 @@ Page({
         );
     },
     filter(e) {
-        const { value } = e.currentTarget.dataset;
+        const { value } = e.detail;
         let todoList;
         switch (value) {
             case 'all':

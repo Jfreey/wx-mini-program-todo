@@ -1,0 +1,13 @@
+<view class="list">
+    <view wx:for="{{todoList}}" wx:key="code">
+        <label class="todo-item" bind:tap="selectHandle" data-index="{{index}}">
+            <switch type="checkbox" value="{{item.checked}}" checked="{{item.checked}}"></switch>
+            <view class="{{item.checked === true?'complete':''}} content">
+                <text>{{item.value}}</text>
+            </view>
+            <view>
+                <button bind:tap="deleteHandle" type="warn" data-index="index" size="mini">删除</button>
+            </view>
+        </label>
+    </view>
+</view>

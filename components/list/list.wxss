@@ -1,0 +1,30 @@
+.list {
+    padding-top: 260rpx;
+}
+
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20rpx;
+    background: #f1f1f1f1;
+    border: 1rpx solid #b1b1b1;
+    box-shadow: 1rpx 5rpx 1rpx #e6e6e6, 1rpx 5rpx 10rpx #ccc;
+    color: #666666;
+    border-radius: 4px;
+    margin-bottom: 20rpx;
+}
+
+.complete {
+    text-decoration: line-through;
+    color: #aaaaaa;
+}
+
+.content {
+    width: 76%;
+}
+
+.content text {
+    word-wrap: break-word;
+}
